@@ -1,0 +1,26 @@
+body {
+    background-image: url(car.webp);
+}
+.carContainer {
+    color:rgb(71, 109, 97);
+    text-align: center;
+    background-color: antiquewhite;
+    width: 30%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 50px;
+    
+}
+.btn {
+    text-align: center;
+    font-size: 16px;
+    margin: 5px;
+    background-color: rgb(204, 218, 182);
+    cursor: pointer;
+    font-family: sans-serif;
+}
+#inpcar {
+    border-radius: 10px;
+    font-size: large;
+    background-color: azure;
+}

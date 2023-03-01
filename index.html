@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="carContainer">
+    <input type="text" id="inpcar" placeholder="choose you car">
+    <h3 id="car"></h3>
+    <button onclick="showCar()" class="btn">choose</button>
+</div>
+    <script>
+        const cars = document.getElementById('car')
+        const input = document.getElementById('inpcar')
+        function showCar(){
+            const model = input.value;
+            fetch(`https://api.api-ninjas.com/v1/cars?limit=2&model=${model}`, {
+                method: 'GET',
+                headers: { 
+                    'X-Api-Key': 'HxctiSn3lzO3WoUMuHKRKETL8dHnmwUpMsN4YVN9'
+                },
+            }).then(async(data)=>{
+                const result = await data.json();
+                let html = '';
+                html = `${html}
+                        <p>city_mpg: ${result[0].city_mpg}</p><p>class: ${result[0].class}</p><p>combination_mpg: ${result[0].combination_mpg}</p>
+                        <p>cylinders: ${result[0].cylinders}</p><p>displacement: ${result[0].displacement}</p><p>drive: ${result[0].drive}</p>
+                        <p>fuel_type: ${result[0].fuel_type}</p><p>highway_mpg: ${result[0].highway_mpg}</p><p>make: ${result[0].make}</p>
+                        <p>model: ${result[0].model}</p><p>transmission: ${result[0].transmission}</p><p>year: ${result[0].year}</p>`
+                        cars.innerHTML = html;
+                        input.value = ''
+            })
+        }
+    </script>
+</body>
+</html>
